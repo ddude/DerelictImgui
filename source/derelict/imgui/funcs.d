@@ -40,324 +40,668 @@ private
 
 extern(C) @nogc nothrow
 {
-    alias da_igGetIO                        = ImGuiIO* function();
-    alias da_igGetStyle                     = ImGuiStyle* function();
-    alias da_igNewFrame                     = void function();
-    alias da_igRender                       = void function();
-    alias da_igShutdown                     = void function();
-    alias da_igShowUserGuide                = void function();
-    alias da_igShowStyleEditor          = void function(ImGuiStyle* ref_);
-    alias da_igShowTestWindow               = void function(bool* opened = null);
-    alias da_igShowMetricsWindow            = void function(bool* opened = null);
+    alias da_igGetIO                        = ImGuiIO*          function();
+    alias da_igGetStyle                     = ImGuiStyle*       function();
+    alias da_igNewFrame                     = void              function();
+    alias da_igRender                       = void              function();
+    alias da_igShutdown                     = void              function();
+    alias da_igShowUserGuide                = void              function();
+    alias da_igShowStyleEditor              = void              function(ImGuiStyle* ref_);
+    alias da_igShowTestWindow               = void              function(bool* opened = null);
+    alias da_igShowMetricsWindow            = void              function(bool* opened = null);
 
     // Window
-    alias da_igBegin                        = bool function(const char* name = "Debug", bool* p_opened = null, ImGuiWindowFlags flags = 0);
-    alias da_igBegin2                       = bool function(const char* name, bool* p_opened, const ImVec2 size_on_first_use, float bg_alpha = -1.0f, ImGuiWindowFlags flags = 0);
-    alias da_igEnd                      = void function();
-    alias da_igBeginChild                   = bool function(const char* str_id, const ImVec2 size = ImVec2(0, 0), bool border = false, ImGuiWindowFlags extra_flags = 0);
-    alias da_igBeginChildEx                 = bool function(ImGuiID id, const ImVec2 size = ImVec2(0, 0), bool border = false, ImGuiWindowFlags extra_flags = 0);
-    alias da_igEndChild                     = void function();
-    alias da_igGetContentRegionMax			= void function(ImVec2* outParam);
-	alias da_igGetContentRegionAvail		= void function(ImVec2* outParam);
-    alias da_igGetWindowContentRegionMin    = void function(ImVec2* outParam);
-    alias da_igGetWindowContentRegionMax    = void function(ImVec2* outParam);
-    alias da_igGetWindowDrawList            = ImDrawList* function();
-    alias da_igGetWindowFont                = ImFont* function();
-    alias da_igGetWindowFontSize            = float function(); 
-    alias da_igSetWindowFontScale           = void function(float scale);
-    alias da_igGetWindowPos                 = void function(ImVec2* outParam);
-    alias da_igGetWindowSize                = void function(ImVec2* outParam);
-    alias da_igGetWindowWidth               = float function();
-    alias da_igIsWindowCollapsed            = bool function();
+    alias da_igBegin                        = bool              function(const(char)* name = "Debug", bool* p_opened = null, ImGuiWindowFlags flags = 0);
+    alias da_igBegin2                       = bool              function(const(char)* name, bool* p_opened, const ImVec2 size_on_first_use, float bg_alpha = -1.0f, ImGuiWindowFlags flags = 0);
+    alias da_igEnd                          = void              function();
+    alias da_igBeginChild                   = bool              function(const(char)* str_id, const ImVec2 size = ImVec2(0, 0), bool border = false, ImGuiWindowFlags extra_flags = 0);
+    alias da_igBeginChildEx                 = bool              function(ImGuiID id, const ImVec2 size = ImVec2(0, 0), bool border = false, ImGuiWindowFlags extra_flags = 0);
+    alias da_igEndChild                     = void              function();
+    alias da_igGetContentRegionMax          = void              function(ImVec2* outParam);
+    alias da_igGetContentRegionAvail        = void              function(ImVec2* outParam);
+    alias da_igGetContentRegionAvailWidth   = float             function();
+    alias da_igGetWindowContentRegionMin    = void              function(ImVec2* outParam);
+    alias da_igGetWindowContentRegionMax    = void              function(ImVec2* outParam);
+    alias da_igGetWindowContentRegionWidth  = float             function();
+    alias da_igGetWindowDrawList            = ImDrawList*       function();
+    alias da_igGetWindowFont                = ImFont*           function();
+    alias da_igGetWindowFontSize            = float             function();
+    alias da_igSetWindowFontScale           = void              function(float scale);
+    alias da_igGetWindowPos                 = void              function(ImVec2* outParam);
+    alias da_igGetWindowSize                = void              function(ImVec2* outParam);
+    alias da_igGetWindowWidth               = float             function();
+    alias da_igGetWindowHeight              = float             function();
+    alias da_igIsWindowCollapsed            = bool              function();
 
-    alias da_igSetNextWindowPos             = void function(const ImVec2 pos, ImGuiSetCond cond = 0);
-    alias da_igSetNextWindowPosCenter      = void function(ImGuiSetCond cond = 0);
-    alias da_igSetNextWindowSize            = void function(const ImVec2 size, ImGuiSetCond cond = 0);
-    alias da_igSetNextWindowCollapsed       = void function(bool collapsed, ImGuiSetCond cond = 0);
-    alias da_igSetNextWindowFocus           = void function();
-    alias da_igSetWindowPos                 = void function(const ImVec2 pos, ImGuiSetCond cond = 0);
-    alias da_igSetWindowSize                = void function(const ImVec2 size, ImGuiSetCond cond = 0);
-    alias da_igSetWindowCollapsed           = void function(bool collapsed, ImGuiSetCond cond = 0);
-    alias da_igSetWindowFocus               = void function();
-    alias da_igSetWindowPosByName               = void function(const char* name, const ImVec2 pos, ImGuiSetCond cond = 0);
-    alias da_igSetWindowSize2               = void function(const char* name, const ImVec2 size, ImGuiSetCond cond = 0);
-    alias da_igSetWindowCollapsed2      = void function(const char* name, bool collapsed, ImGuiSetCond cond = 0);
-    alias da_igSetWindowFocus2          = void function(const char* name);
-    
-    alias da_igGetScrollY                   = float         function();
-    alias da_igGetScrollMaxY                = float         function();
-    alias da_igSetScrollY                  = void              function(int scroll_y);
+    alias da_igSetNextWindowPos             = void              function(const ImVec2 pos, ImGuiSetCond cond = 0);
+    alias da_igSetNextWindowPosCenter       = void              function(ImGuiSetCond cond = 0);
+    alias da_igSetNextWindowSize            = void              function(const ImVec2 size, ImGuiSetCond cond = 0);
+    alias da_igSetNextWindowContentSize     = void              function(const ImVec2 size);
+    alias da_igSetNextWindowContentWidth    = void              function(float width);
+    alias da_igSetNextWindowCollapsed       = void              function(bool collapsed, ImGuiSetCond cond = 0);
+    alias da_igSetNextWindowFocus           = void              function();
+    alias da_igSetWindowPos                 = void              function(const ImVec2 pos, ImGuiSetCond cond = 0);
+    alias da_igSetWindowSize                = void              function(const ImVec2 size, ImGuiSetCond cond = 0);
+    alias da_igSetWindowCollapsed           = void              function(bool collapsed, ImGuiSetCond cond = 0);
+    alias da_igSetWindowFocus               = void              function();
+    alias da_igSetWindowPosByName           = void              function(const(char)* name, const ImVec2 pos, ImGuiSetCond cond = 0);
+    alias da_igSetWindowSize2               = void              function(const(char)* name, const ImVec2 size, ImGuiSetCond cond = 0);
+    alias da_igSetWindowCollapsed2          = void              function(const(char)* name, bool collapsed, ImGuiSetCond cond = 0);
+    alias da_igSetWindowFocus2              = void              function(const(char)* name);
+
+    alias da_igGetScrollX                   = float             function();
+    alias da_igGetScrollY                   = float             function();
+    alias da_igGetScrollMaxX                = float             function();
+    alias da_igGetScrollMaxY                = float             function();
+    alias da_igSetScrollY                   = void              function(int scroll_y);
     alias da_igSetScrollHere                = void              function(float center_y_ratio = 0.5f);
-    alias da_igSetScrollFromPosY           = void              function(float pos_y, float center_y_ratio = 0.5f);
-    alias da_igSetKeyboardFocusHere     = void              function(int offset = 0);
+    alias da_igSetScrollFromPosY            = void              function(float pos_y, float center_y_ratio = 0.5f);
+    alias da_igSetKeyboardFocusHere         = void              function(int offset = 0);
     alias da_igSetStateStorage              = void              function(ImGuiStorage* tree);
-    alias da_igGetStateStorage              = ImGuiStorage* function();
+    alias da_igGetStateStorage              = ImGuiStorage*     function();
 
-    alias da_igPushFont                 = void              function(ImFont* font);
+    alias da_igPushFont                     = void              function(ImFont* font);
     alias da_igPopFont                      = void              function();
     alias da_igPushStyleColor               = void              function(ImGuiCol idx, const ImVec4 col);
     alias da_igPopStyleColor                = void              function(int count = 1);
-    alias da_igPushStyleVar             = void              function(ImGuiStyleVar idx, float val);
+    alias da_igPushStyleVar                 = void              function(ImGuiStyleVar idx, float val);
     alias da_igPushStyleVarVec              = void              function(ImGuiStyleVar idx, const ImVec2 val);
     alias da_igPopStyleVar                  = void              function(int count = 1);
 
     alias da_igPushItemWidth                = void              function(float item_width);
-    alias da_igPopItemWidth             = void              function();
-    alias da_igCalcItemWidth                = float         function();
+    alias da_igPopItemWidth                 = void              function();
+    alias da_igCalcItemWidth                = float             function();
     alias da_igPushAllowKeyboardFocus       = void              function(bool v);
     alias da_igPopAllowKeyboardFocus        = void              function();
     alias da_igPushTextWrapPos              = void              function(float wrap_pos_x = 0.0f);
     alias da_igPopTextWrapPos               = void              function();
-    alias da_igPushButtonRepeat            = void              function(bool repeat);
-    alias da_igPopButtonRepeat             = void              function();
+    alias da_igPushButtonRepeat             = void              function(bool repeat);
+    alias da_igPopButtonRepeat              = void              function();
 
     alias da_igBeginGroup                   = void              function();
-    alias da_igEndGroup                 = void              function();
+    alias da_igEndGroup                     = void              function();
     alias da_igSeparator                    = void              function();
     alias da_igSameLine                     = void              function(float pos_x = 0.0f, float spacing_w = -1.0f);
     alias da_igSpacing                      = void              function();
-    alias da_igDummy                       = void              function(const ImVec2* size);
+    alias da_igDummy                        = void              function(const ImVec2* size);
     alias da_igIndent                       = void              function();
-    alias da_igUnindent                 = void              function();
-    alias da_igColumns                      = void              function(int count = 1, const char* id = null, bool border = true);
+    alias da_igUnindent                     = void              function();
+    alias da_igColumns                      = void              function(int count = 1, const(char)* id = null, bool border = true);
     alias da_igNextColumn                   = void              function();
     alias da_igGetColumnIndex               = int               function();
-    alias da_igGetColumnOffset              = float         function(int column_index = -1);
+    alias da_igGetColumnOffset              = float             function(int column_index = -1);
     alias da_igSetColumnOffset              = void              function(int column_index, float offset_x);
-    alias da_igGetColumnWidth               = float         function(int column_index = -1);
+    alias da_igGetColumnWidth               = float             function(int column_index = -1);
     alias da_igGetColumnsCount              = int               function();
-    alias da_igGetCursorPos             = void          function(ImVec2* pOut);
-    alias da_igGetCursorPosX                = float         function();
-    alias da_igGetCursorPosY                = float         function();
-    alias da_igSetCursorPos             = void              function(const ImVec2 pos);
+    alias da_igGetCursorPos                 = void              function(ImVec2* pOut);
+    alias da_igGetCursorPosX                = float             function();
+    alias da_igGetCursorPosY                = float             function();
+    alias da_igSetCursorPos                 = void              function(const ImVec2 pos);
     alias da_igSetCursorPosX                = void              function(float x);
     alias da_igSetCursorPosY                = void              function(float y);
-    alias da_igGetCursorStartPos           = void function(ImVec2* pOut);
-    alias da_igGetCursorScreenPos           = void function(ImVec2* pOut);
+    alias da_igGetCursorStartPos            = void              function(ImVec2* pOut);
+    alias da_igGetCursorScreenPos           = void              function(ImVec2* pOut);
     alias da_igSetCursorScreenPos           = void              function(const ImVec2 pos);
-    alias da_igAlignFirstTextHeightToWidgets    = void              function();
-    alias da_igGetTextLineHeight            = float         function();
-    alias da_igGetTextLineHeightWithSpacing = float         function();
-    alias da_igGetItemsLineHeightWithSpacing    = float         function();
+    alias da_igAlignFirstTextHeightToWidgets = void             function();
+    alias da_igGetTextLineHeight            = float             function();
+    alias da_igGetTextLineHeightWithSpacing = float             function();
+    alias da_igGetItemsLineHeightWithSpacing = float            function();
 
-    alias da_igPushIdStr                    = void              function(const char* str_id);
-    alias da_igPushIdStrRange              = void              function(const char* str_begin, const char* str_end);
-    alias da_igPushIdPtr                    = void              function(const void* ptr_id);
+    alias da_igPushIdStr                    = void              function(const(char)* str_id);
+    alias da_igPushIdStrRange               = void              function(const(char)* str_begin, const(char)* str_end);
+    alias da_igPushIdPtr                    = void              function(const(void)* ptr_id);
     alias da_igPushIdInt                    = void              function(int int_id);
     alias da_igPopId                        = void              function();
-    alias da_igGetIdStr                 = ImGuiID           function(const char* str_id);
-    alias da_igGetIdStrRange               = ImGuiID           function(const char* str_begin, const char* str_end);
-    alias da_igGetIdPtr                 = ImGuiID           function(const void* ptr_id);
+    alias da_igGetIdStr                     = ImGuiID           function(const(char)* str_id);
+    alias da_igGetIdStrRange                = ImGuiID           function(const(char)* str_begin, const(char)* str_end);
+    alias da_igGetIdPtr                     = ImGuiID           function(const(void)* ptr_id);
 
-    alias da_igText                     = void              function(const char* fmt, ...);
-    alias da_igTextV                        = void              function(const char* fmt, va_list args);
-    alias da_igTextColored                  = void              function(const ImVec4 col, const char* fmt, ...);
-    alias da_igTextColoredV             = void              function(const ImVec4 col, const char* fmt, va_list args);
-    alias da_igTextDisabled                = void              function(const char* fmt, ...);
-    alias da_igTextDisabledV               = void              function(const char* fmt, va_list args);
-    alias da_igTextWrapped                  = void              function(const char* fmt, ...);
-    alias da_igTextWrappedV             = void              function(const char* fmt, va_list args);
-    alias da_igTextUnformatted              = void              function(const char* text, const char* text_end = null);
-    alias da_igLabelText                    = void              function(const char* label, const char* fmt, ...);
-    alias da_igLabelTextV                   = void              function(const char* label, const char* fmt, va_list args);
+    alias da_igText                         = void              function(const(char)* fmt, ...);
+    alias da_igTextV                        = void              function(const(char)* fmt, va_list args);
+    alias da_igTextColored                  = void              function(const ImVec4 col, const(char)* fmt, ...);
+    alias da_igTextColoredV                 = void              function(const ImVec4 col, const(char)* fmt, va_list args);
+    alias da_igTextDisabled                 = void              function(const(char)* fmt, ...);
+    alias da_igTextDisabledV                = void              function(const(char)* fmt, va_list args);
+    alias da_igTextWrapped                  = void              function(const(char)* fmt, ...);
+    alias da_igTextWrappedV                 = void              function(const(char)* fmt, va_list args);
+    alias da_igTextUnformatted              = void              function(const(char)* text, const(char)* text_end = null);
+    alias da_igLabelText                    = void              function(const(char)* label, const(char)* fmt, ...);
+    alias da_igLabelTextV                   = void              function(const(char)* label, const(char)* fmt, va_list args);
     alias da_igBullet                       = void              function();
-    alias da_igBulletText                   = void              function(const char* fmt, ...);
-    alias da_igBulletTextV                  = void              function(const char* fmt, va_list args);
-    alias da_igButton                       = bool              function(const char* label, const ImVec2 size = ImVec2(0, 0));
-    alias da_igSmallButton                  = bool              function(const char* label);
-    alias da_igInvisibleButton              = bool              function(const char* str_id, const ImVec2 size);
+    alias da_igBulletText                   = void              function(const(char)* fmt, ...);
+    alias da_igBulletTextV                  = void              function(const(char)* fmt, va_list args);
+    alias da_igButton                       = bool              function(const(char)* label, const ImVec2 size = ImVec2(0, 0));
+    alias da_igSmallButton                  = bool              function(const(char)* label);
+    alias da_igInvisibleButton              = bool              function(const(char)* str_id, const ImVec2 size);
     alias da_igImage                        = void              function(ImTextureID user_texture_id, const ImVec2 size, const ImVec2 uv0 = ImVec2(0, 0), const ImVec2 uv1 = ImVec2(1, 1), const ImVec4 tint_col = ImVec4(1, 1, 1, 1), const ImVec4 border_col = ImVec4(0, 0, 0, 0));
     alias da_igImageButton                  = bool              function(ImTextureID user_texture_id, const ImVec2 size, const ImVec2 uv0 = ImVec2(0, 0), const ImVec2 uv1 = ImVec2(1, 1), int frame_padding = -1, const ImVec4 bg_col = ImVec4(0, 0, 0, 0), const ImVec4 tint_col = ImVec4(1, 1, 1, 1));
-    alias da_igCollapsingHeader         = bool              function(const char* label, const char* str_id = null, bool display_frame = true, bool default_open = false);
-    alias da_igCheckbox                 = bool              function(const char* label, bool* v);
-    alias da_igCheckboxFlags                = bool              function(const char* label, uint* flags, uint flags_value);
-    alias da_igRadioButtonBool                  = bool              function(const char* label, bool active);
-    alias da_igRadioButton              = bool              function(const char* label, int* v, int v_button);
-    alias da_igCombo                        = bool              function(const char* label, int* current_item, const char** items, int items_count, int height_in_items = -1);
-    alias da_igCombo2                       = bool              function(const char* label, int* current_item, const char* items_separated_by_zeros, int height_in_items = -1);
-    alias da_igCombo3                       = bool              function(const char* label, int* current_item, bool function(void* data, int idx, const(char)** out_text) items_getter, void* data, int items_count, int height_in_items = -1);
+    alias da_igCollapsingHeader             = bool              function(const(char)* label, const(char)* str_id = null, bool display_frame = true, bool default_open = false);
+    alias da_igCheckbox                     = bool              function(const(char)* label, bool* v);
+    alias da_igCheckboxFlags                = bool              function(const(char)* label, uint* flags, uint flags_value);
+    alias da_igRadioButtonBool              = bool              function(const(char)* label, bool active);
+    alias da_igRadioButton                  = bool              function(const(char)* label, int* v, int v_button);
+    alias da_igCombo                        = bool              function(const(char)* label, int* current_item, const(char*)* items, int items_count, int height_in_items = -1);
+    alias da_igCombo2                       = bool              function(const(char)* label, int* current_item, const(char)* items_separated_by_zeros, int height_in_items = -1);
+    alias da_igCombo3                       = bool              function(const(char)* label, int* current_item, bool function(void* data, int idx, const(char*)* out_text) items_getter, void* data, int items_count, int height_in_items = -1);
     alias da_igColorButton                  = bool              function(const ImVec4 col, bool small_height = false, bool outline_border = true);
-    alias da_igColorEdit3                   = bool              function(const char* label, ref float[3] col);
-    alias da_igColorEdit4                   = bool              function(const char* label, ref float[4] col, bool show_alpha = true);
+    alias da_igColorEdit3                   = bool              function(const(char)* label, ref float[3] col);
+    alias da_igColorEdit4                   = bool              function(const(char)* label, ref float[4] col, bool show_alpha = true);
     alias da_igColorEditMode                = void              function(ImGuiColorEditMode mode);
-    alias da_igPlotLines                    = void              function(const char* label, const float* values, int values_count, int values_offset = 0, const char* overlay_text = null, float scale_min = float.max, float scale_max = float.max, ImVec2 graph_size = ImVec2(0, 0), size_t stride = float.sizeof);
-    alias da_igPlotLines2                   = void              function(const char* label, float function(void* data, int idx) values_getter, void* data, int values_count, int values_offset = 0, const char* overlay_text = null, float scale_min = float.max, float scale_max = float.max, ImVec2 graph_size = ImVec2(0, 0));
-    alias da_igPlotHistogram                = void              function(const char* label, const float* values, int values_count, int values_offset = 0, const char* overlay_text = null, float scale_min = float.max, float scale_max = float.max, ImVec2 graph_size = ImVec2(0, 0), size_t stride = float.sizeof);
-    alias da_igPlotHistogram2               = void              function(const char* label, float function(void* data, int idx) values_getter, void* data, int values_count, int values_offset = 0, const char* overlay_text = null, float scale_min = float.max, float scale_max = float.max, ImVec2 graph_size = ImVec2(0, 0));
+    alias da_igPlotLines                    = void              function(const(char)* label, const(float)* values, int values_count, int values_offset = 0, const(char)* overlay_text = null, float scale_min = float.max, float scale_max = float.max, ImVec2 graph_size = ImVec2(0, 0), size_t stride = float.sizeof);
+    alias da_igPlotLines2                   = void              function(const(char)* label, float function(void* data, int idx) values_getter, void* data, int values_count, int values_offset = 0, const(char)* overlay_text = null, float scale_min = float.max, float scale_max = float.max, ImVec2 graph_size = ImVec2(0, 0));
+    alias da_igPlotHistogram                = void              function(const(char)* label, const(float)* values, int values_count, int values_offset = 0, const(char)* overlay_text = null, float scale_min = float.max, float scale_max = float.max, ImVec2 graph_size = ImVec2(0, 0), size_t stride = float.sizeof);
+    alias da_igPlotHistogram2               = void              function(const(char)* label, float function(void* data, int idx) values_getter, void* data, int values_count, int values_offset = 0, const(char)* overlay_text = null, float scale_min = float.max, float scale_max = float.max, ImVec2 graph_size = ImVec2(0, 0));
 
-    alias da_igSliderFloat                  = bool              function(const char* label, float* v, float v_min, float v_max, const char* display_format = "%.3f", float power = 1.0f);
-    alias da_igSliderFloat2             = bool              function(const char* label, ref float[2] v, float v_min, float v_max, const char* display_format = "%.3f", float power = 1.0f);
-    alias da_igSliderFloat3             = bool              function(const char* label, ref float[3] v, float v_min, float v_max, const char* display_format = "%.3f", float power = 1.0f);
-    alias da_igSliderFloat4             = bool              function(const char* label, ref float[4] v, float v_min, float v_max, const char* display_format = "%.3f", float power = 1.0f);
-    alias da_igSliderAngle                  = bool              function(const char* label, float* v_rad, float v_degrees_min = -360.0f, float v_degrees_max = +360.0f);
-    alias da_igSliderInt                    = bool              function(const char* label, int* v, int v_min, int v_max, const char* display_format = "%.0f");
-    alias da_igSliderInt2                   = bool              function(const char* label, ref int[2] v, int v_min, int v_max, const char* display_format = "%.0f");
-    alias da_igSliderInt3                   = bool              function(const char* label, ref int[3] v, int v_min, int v_max, const char* display_format = "%.0f");
-    alias da_igSliderInt4                   = bool              function(const char* label, ref int[4] v, int v_min, int v_max, const char* display_format = "%.0f");
-    alias da_igVSliderFloat             = bool              function(const char* label, const ImVec2 size, float* v, float v_min, float v_max, const char* display_format = "%.3f", float power = 1.0f);
-    alias da_igVSliderInt                   = bool              function(const char* label, const ImVec2 size, int* v, int v_min, int v_max, const char* display_format = "%.0f");
+    alias da_igSliderFloat                  = bool              function(const(char)* label, float* v, float v_min, float v_max, const(char)* display_format = "%.3f", float power = 1.0f);
+    alias da_igSliderFloat2                 = bool              function(const(char)* label, ref float[2] v, float v_min, float v_max, const(char)* display_format = "%.3f", float power = 1.0f);
+    alias da_igSliderFloat3                 = bool              function(const(char)* label, ref float[3] v, float v_min, float v_max, const(char)* display_format = "%.3f", float power = 1.0f);
+    alias da_igSliderFloat4                 = bool              function(const(char)* label, ref float[4] v, float v_min, float v_max, const(char)* display_format = "%.3f", float power = 1.0f);
+    alias da_igSliderAngle                  = bool              function(const(char)* label, float* v_rad, float v_degrees_min = -360.0f, float v_degrees_max = +360.0f);
+    alias da_igSliderInt                    = bool              function(const(char)* label, int* v, int v_min, int v_max, const(char)* display_format = "%.0f");
+    alias da_igSliderInt2                   = bool              function(const(char)* label, ref int[2] v, int v_min, int v_max, const(char)* display_format = "%.0f");
+    alias da_igSliderInt3                   = bool              function(const(char)* label, ref int[3] v, int v_min, int v_max, const(char)* display_format = "%.0f");
+    alias da_igSliderInt4                   = bool              function(const(char)* label, ref int[4] v, int v_min, int v_max, const(char)* display_format = "%.0f");
+    alias da_igVSliderFloat                 = bool              function(const(char)* label, const ImVec2 size, float* v, float v_min, float v_max, const(char)* display_format = "%.3f", float power = 1.0f);
+    alias da_igVSliderInt                   = bool              function(const(char)* label, const ImVec2 size, int* v, int v_min, int v_max, const(char)* display_format = "%.0f");
 
-    alias da_igDragFloat                   = bool              function(const char* label, float* v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const char* display_format = "%.3f", float power = 1.0f);     // If v_max >= v_max we have no bound
-    alias da_igDragFloat2                  = bool              function(const char* label, ref float[2] v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const char* display_format = "%.3f", float power = 1.0f);
-    alias da_igDragFloat3                  = bool              function(const char* label, ref float[3] v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const char* display_format = "%.3f", float power = 1.0f);
-    alias da_igDragFloat4                  = bool              function(const char* label, ref float[4] v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const char* display_format = "%.3f", float power = 1.0f);
-    alias da_igDragFloatRange2             = bool              function(const char* label, float* v_current_min, float* v_current_max, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const char* display_format = "%.3f", const char* display_format_max = null, float power = 1.0f);
-    alias da_igDragInt                     = bool              function(const char* label, int* v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const char* display_format = "%.3f");                                       // If v_max >= v_max we have no bound
-    alias da_igDragInt2                    = bool              function(const char* label, ref int[2] v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const char* display_format = "%.3f");
-    alias da_igDragInt3                    = bool              function(const char* label, ref int[3] v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const char* display_format = "%.3f");
-    alias da_igDragInt4                    = bool              function(const char* label, ref int[4] v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const char* display_format = "%.3f");
-    alias da_igDragIntRange2               = bool              function(const char* label, int* v_current_min, int* v_current_max, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const char* display_format = "%.0f", const char* display_format_max = null);
+    alias da_igDragFloat                    = bool              function(const(char)* label, float* v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const(char)* display_format = "%.3f", float power = 1.0f);     // If v_max >= v_max we have no bound
+    alias da_igDragFloat2                   = bool              function(const(char)* label, ref float[2] v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const(char)* display_format = "%.3f", float power = 1.0f);
+    alias da_igDragFloat3                   = bool              function(const(char)* label, ref float[3] v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const(char)* display_format = "%.3f", float power = 1.0f);
+    alias da_igDragFloat4                   = bool              function(const(char)* label, ref float[4] v, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const(char)* display_format = "%.3f", float power = 1.0f);
+    alias da_igDragFloatRange2              = bool              function(const(char)* label, float* v_current_min, float* v_current_max, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f, const(char)* display_format = "%.3f", const(char)* display_format_max = null, float power = 1.0f);
+    alias da_igDragInt                      = bool              function(const(char)* label, int* v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const(char)* display_format = "%.3f");                                       // If v_max >= v_max we have no bound
+    alias da_igDragInt2                     = bool              function(const(char)* label, ref int[2] v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const(char)* display_format = "%.3f");
+    alias da_igDragInt3                     = bool              function(const(char)* label, ref int[3] v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const(char)* display_format = "%.3f");
+    alias da_igDragInt4                     = bool              function(const(char)* label, ref int[4] v, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const(char)* display_format = "%.3f");
+    alias da_igDragIntRange2                = bool              function(const(char)* label, int* v_current_min, int* v_current_max, float v_speed = 1.0f, int v_min = 0, int v_max = 0, const(char)* display_format = "%.0f", const(char)* display_format_max = null);
 
-    alias da_igInputText                    = bool              function(const char* label, char* buf, size_t buf_size, ImGuiInputTextFlags flags = 0, ImGuiTextEditCallback callback = null, void* user_data = null);
-    alias da_igInputTextMultiline          = bool              function(const char* label, char* buf, size_t buf_size, const ImVec2 size = ImVec2(0,0), ImGuiInputTextFlags flags = 0, ImGuiTextEditCallback callback = null, void* user_data = null);
-    alias da_igInputFloat                   = bool              function(const char* label, float* v, float step = 0.0f, float step_fast = 0.0f, int decimal_precision = -1, ImGuiInputTextFlags extra_flags = 0);
-    alias da_igInputFloat2                  = bool              function(const char* label, ref float[2] v, int decimal_precision = -1, ImGuiInputTextFlags extra_flags = 0);
-    alias da_igInputFloat3                  = bool              function(const char* label, ref float[3] v, int decimal_precision = -1, ImGuiInputTextFlags extra_flags = 0);
-    alias da_igInputFloat4                  = bool              function(const char* label, ref float[4] v, int decimal_precision = -1, ImGuiInputTextFlags extra_flags = 0);
-    alias da_igInputInt                 = bool              function(const char* label, int* v, int step = 1, int step_fast = 100, ImGuiInputTextFlags extra_flags = 0);
-    alias da_igInputInt2                    = bool              function(const char* label, ref int[2] v, ImGuiInputTextFlags extra_flags = 0);
-    alias da_igInputInt3                    = bool              function(const char* label, ref int[3] v, ImGuiInputTextFlags extra_flags = 0);
-    alias da_igInputInt4                    = bool              function(const char* label, ref int[4] v, ImGuiInputTextFlags extra_flags = 0);
-            
-    alias da_igTreeNode                 = bool              function(const char* str_label_id);
-    alias da_igTreeNodeStr                  = bool              function(const char* str_id, const char* fmt, ...);
-    alias da_igTreeNodePtr                  = bool              function(const void* ptr_id, const char* fmt, ...);
-    alias da_igTreeNodeStrV                 = bool              function(const char* str_id, const char* fmt, va_list args);
-    alias da_igTreeNodePtrV                 = bool              function(const void* ptr_id, const char* fmt, va_list args);
-    alias da_igTreePushStr                  = void              function(const char* str_id = null);
-    alias da_igTreePushPtr                  = void              function(const void* ptr_id = null);
+    alias da_igInputText                    = bool              function(const(char)* label, char* buf, size_t buf_size, ImGuiInputTextFlags flags = 0, ImGuiTextEditCallback callback = null, void* user_data = null);
+    alias da_igInputTextMultiline           = bool              function(const(char)* label, char* buf, size_t buf_size, const ImVec2 size = ImVec2(0,0), ImGuiInputTextFlags flags = 0, ImGuiTextEditCallback callback = null, void* user_data = null);
+    alias da_igInputFloat                   = bool              function(const(char)* label, float* v, float step = 0.0f, float step_fast = 0.0f, int decimal_precision = -1, ImGuiInputTextFlags extra_flags = 0);
+    alias da_igInputFloat2                  = bool              function(const(char)* label, ref float[2] v, int decimal_precision = -1, ImGuiInputTextFlags extra_flags = 0);
+    alias da_igInputFloat3                  = bool              function(const(char)* label, ref float[3] v, int decimal_precision = -1, ImGuiInputTextFlags extra_flags = 0);
+    alias da_igInputFloat4                  = bool              function(const(char)* label, ref float[4] v, int decimal_precision = -1, ImGuiInputTextFlags extra_flags = 0);
+    alias da_igInputInt                     = bool              function(const(char)* label, int* v, int step = 1, int step_fast = 100, ImGuiInputTextFlags extra_flags = 0);
+    alias da_igInputInt2                    = bool              function(const(char)* label, ref int[2] v, ImGuiInputTextFlags extra_flags = 0);
+    alias da_igInputInt3                    = bool              function(const(char)* label, ref int[3] v, ImGuiInputTextFlags extra_flags = 0);
+    alias da_igInputInt4                    = bool              function(const(char)* label, ref int[4] v, ImGuiInputTextFlags extra_flags = 0);
+
+    alias da_igTreeNode                     = bool              function(const(char)* str_label_id);
+    alias da_igTreeNodeStr                  = bool              function(const(char)* str_id, const(char)* fmt, ...);
+    alias da_igTreeNodePtr                  = bool              function(const(void)* ptr_id, const(char)* fmt, ...);
+    alias da_igTreeNodeStrV                 = bool              function(const(char)* str_id, const(char)* fmt, va_list args);
+    alias da_igTreeNodePtrV                 = bool              function(const(void)* ptr_id, const(char)* fmt, va_list args);
+    alias da_igTreePushStr                  = void              function(const(char)* str_id = null);
+    alias da_igTreePushPtr                  = void              function(const(void)* ptr_id = null);
     alias da_igTreePop                      = void              function();
     alias da_igSetNextTreeNodeOpened        = void              function(bool opened, ImGuiSetCond cond = 0);
 
-    alias da_igSelectable                   = bool              function(const char* label, bool selected = false, ImGuiSelectableFlags flags = 0, const ImVec2 size = ImVec2(0, 0));
-    alias da_igSelectableEx             = bool              function(const char* label, bool* p_selected, ImGuiSelectableFlags flags = 0, const ImVec2 size = ImVec2(0, 0));
+    alias da_igSelectable                   = bool              function(const(char)* label, bool selected = false, ImGuiSelectableFlags flags = 0, const ImVec2 size = ImVec2(0, 0));
+    alias da_igSelectableEx                 = bool              function(const(char)* label, bool* p_selected, ImGuiSelectableFlags flags = 0, const ImVec2 size = ImVec2(0, 0));
 
-    alias da_igListBox                      = bool              function(const char* label, int* current_item, const char** items, int items_count, int height_in_items = -1);
-    alias da_igListBox2                 = bool              function(const char* label, int* current_item, bool function(void* data, int idx, const char** out_text) items_getter, void* data, int items_count, int height_in_items = -1);
-    alias da_igListBoxHeader                = bool              function(const char* label, const ImVec2 size = ImVec2(0, 0));
-    alias da_igListBoxHeader2               = bool              function(const char* label, int items_count, int height_in_items = -1);
+    alias da_igListBox                      = bool              function(const(char)* label, int* current_item, const(char*)* items, int items_count, int height_in_items = -1);
+    alias da_igListBox2                     = bool              function(const(char)* label, int* current_item, bool function(void* data, int idx, const(char*)* out_text) items_getter, void* data, int items_count, int height_in_items = -1);
+    alias da_igListBoxHeader                = bool              function(const(char)* label, const ImVec2 size = ImVec2(0, 0));
+    alias da_igListBoxHeader2               = bool              function(const(char)* label, int items_count, int height_in_items = -1);
     alias da_igListBoxFooter                = void              function();
 
-    alias da_igValueBool       = void              function(const char* prefix, bool b);
-    alias da_igValueInt        = void              function(const char* prefix, int v);
-    alias da_igValueUInt       = void              function(const char* prefix, uint v);
-    alias da_igValueFloat      = void              function(const char* prefix, float v, const char* float_format = null);
-    alias da_igColor           = void              function(const char* prefix, const ImVec4 v);
-    alias da_igColor2          = void              function(const char* prefix, uint v);
+    alias da_igValueBool                    = void              function(const(char)* prefix, bool b);
+    alias da_igValueInt                     = void              function(const(char)* prefix, int v);
+    alias da_igValueUInt                    = void              function(const(char)* prefix, uint v);
+    alias da_igValueFloat                   = void              function(const(char)* prefix, float v, const(char)* float_format = null);
+    alias da_igColor                        = void              function(const(char)* prefix, const ImVec4 v);
+    alias da_igColor2                       = void              function(const(char)* prefix, uint v);
 
-    alias da_igSetTooltip                  = void              function(const(char)* fmt, ...);
-    alias da_igSetTooltipV                 = void              function(const(char)* fmt, va_list args);
-    alias da_igBeginTooltip                = void              function();
-    alias da_igEndTooltip                  = void              function();
+    alias da_igSetTooltip                   = void              function(const(char)* fmt, ...);
+    alias da_igSetTooltipV                  = void              function(const(char)* fmt, va_list args);
+    alias da_igBeginTooltip                 = void              function();
+    alias da_igEndTooltip                   = void              function();
 
     // Widgets: Menus
-    alias da_igBeginMainMenuBar            = bool      function();
-    alias da_igEndMainMenuBar              = void      function();
-    alias da_igBeginMenuBar                = bool      function();
-    alias da_igEndMenuBar                  = void      function();
-    alias da_igBeginMenu                   = bool      function(const(char)* label, bool enabled = true);
-    alias da_igEndMenu                     = void      function();
-    alias da_igMenuItem                    = bool      function(const(char)* label, const(char)* shortcut, bool selected = false, bool enabled = true);
-    alias da_igMenuItemPtr                 = bool      function(const(char)* label, const(char)* shortcut, bool* p_selected, bool enabled = true);
+    alias da_igBeginMainMenuBar             = bool              function();
+    alias da_igEndMainMenuBar               = void              function();
+    alias da_igBeginMenuBar                 = bool              function();
+    alias da_igEndMenuBar                   = void              function();
+    alias da_igBeginMenu                    = bool              function(const(char)* label, bool enabled = true);
+    alias da_igEndMenu                      = void              function();
+    alias da_igMenuItem                     = bool              function(const(char)* label, const(char)* shortcut, bool selected = false, bool enabled = true);
+    alias da_igMenuItemPtr                  = bool              function(const(char)* label, const(char)* shortcut, bool* p_selected, bool enabled = true);
 
-    alias da_igOpenPopup                   = void              function(const(char)* str_id);
-    alias da_igBeginPopup                  = bool              function(const(char)* str_id);
-    alias da_igBeginPopupModal             = bool function(const(char)* name, bool* p_opened = null, ImGuiWindowFlags extra_flags = 0);
-    alias da_igBeginPopupContextItem       = bool              function(const(char)* str_id, int mouse_button = 1);
-    alias da_igBeginPopupContextWindow     = bool              function(bool also_over_items = true, const(char)* str_id = null, int mouse_button = 1);
-    alias da_igBeginPopupContextVoid       = bool              function(const char* str_id = null, int mouse_button = 1);
-    alias da_igEndPopup                    = void              function();
-    alias da_igCloseCurrentPopup           = void              function();
+    alias da_igOpenPopup                    = void              function(const(char)* str_id);
+    alias da_igBeginPopup                   = bool              function(const(char)* str_id);
+    alias da_igBeginPopupModal              = bool              function(const(char)* name, bool* p_opened = null, ImGuiWindowFlags extra_flags = 0);
+    alias da_igBeginPopupContextItem        = bool              function(const(char)* str_id, int mouse_button = 1);
+    alias da_igBeginPopupContextWindow      = bool              function(bool also_over_items = true, const(char)* str_id = null, int mouse_button = 1);
+    alias da_igBeginPopupContextVoid        = bool              function(const(char)* str_id = null, int mouse_button = 1);
+    alias da_igEndPopup                     = void              function();
+    alias da_igCloseCurrentPopup            = void              function();
 
-    alias da_igLogToTTY     = void              function(int max_depth = -1);
-    alias da_igLogToFile        = void              function(int max_depth = -1, const char* filename = null);
-    alias da_igLogToClipboard   = void              function(int max_depth = -1);
-    alias da_igLogFinish        = void              function();
-    alias da_igLogButtons       = void              function();
-    alias da_igLogText          = void              function(const char* fmt, ...);
+    alias da_igLogToTTY                     = void              function(int max_depth = -1);
+    alias da_igLogToFile                    = void              function(int max_depth = -1, const(char)* filename = null);
+    alias da_igLogToClipboard               = void              function(int max_depth = -1);
+    alias da_igLogFinish                    = void              function();
+    alias da_igLogButtons                   = void              function();
+    alias da_igLogText                      = void              function(const(char)* fmt, ...);
 
     alias da_igIsItemHovered                = bool              function();
     alias da_igIsItemHoveredRect            = bool              function();
-    alias da_igIsItemActive             = bool              function();
-    alias da_igIsItemVisible               = bool              function();
-    alias da_igIsAnyItemHovered            = bool              function();
-    alias da_igIsAnyItemActive             = bool              function();
-    alias da_igGetItemRectMin               = void function(ImVec2* pOut);
-    alias da_igGetItemRectMax               = void function(ImVec2* pOut);
-    alias da_igGetItemRectSize              = void function(ImVec2* pOut);
-    alias da_igIsWindowHovered             = bool              function();
+    alias da_igIsItemActive                 = bool              function();
+    alias da_igIsItemVisible                = bool              function();
+    alias da_igIsAnyItemHovered             = bool              function();
+    alias da_igIsAnyItemActive              = bool              function();
+    alias da_igGetItemRectMin               = void              function(ImVec2* pOut);
+    alias da_igGetItemRectMax               = void              function(ImVec2* pOut);
+    alias da_igGetItemRectSize              = void              function(ImVec2* pOut);
+    alias da_igIsWindowHovered              = bool              function();
     alias da_igIsWindowFocused              = bool              function();
     alias da_igIsRootWindowFocused          = bool              function();
-    alias da_igIsRootWindowOrAnyChildFocused    = bool              function();
-    alias da_igIsRectVisible                    = bool              function(const ImVec2 item_size);
-    alias da_igIsKeyDown                   = bool              function(int key_index);
-    alias da_igIsKeyPressed             = bool              function(int key_index, bool repeat = true);
-    alias da_igIsKeyReleased               = bool              function(int key_index);
-    alias da_igIsMouseDown                 = bool              function(int button);
-    alias da_igIsMouseClicked               = bool              function(int button, bool repeat = false);
-    alias da_igIsMouseDoubleClicked     = bool              function(int button);
-    alias da_igIsMouseReleased             = bool              function(int button);
-    alias da_igIsMouseHoveringWindow        = bool              function();
-    alias da_igIsMouseHoveringAnyWindow = bool              function();
-    alias da_igIsMouseHoveringRect          = bool              function(const ImVec2 rect_min, const ImVec2 rect_max);
-    alias da_igIsMouseDragging              = bool              function(int button = 0, float lock_threshold = -1.0f);
+    alias da_igIsRootWindowOrAnyChildFocused = bool             function();
+    alias da_igIsRectVisible                = bool              function(const ImVec2 item_size);
     alias da_igIsPosHoveringAnyWindow       = bool              function(const ImVec2 pos);
-    alias da_igGetMousePos                  = void function(ImVec2* pOut);
-    alias da_igGetMouseDragDelta            = void function(ImVec2* pOut, int button = 0, float lock_threshold = -1.0f);
-    alias da_igResetMouseDragDelta         = void function(int button=0);
-    alias da_igGetMouseCursor               = ImGuiMouseCursor function();
-    alias da_igSetMouseCursor               = void              function(ImGuiMouseCursor type);
-    alias da_igGetTime                      = float         function();
+    alias da_igGetTime                      = float             function();
     alias da_igGetFrameCount                = int               function();
-    alias da_igGetStyleColName             = const(char)*       function(ImGuiCol idx);
-    alias da_igCalcItemRectClosestPoint = void function(ImVec2* pOut, const ImVec2 pos, bool on_edge = false, float outward = +0.0f);
-    alias da_igCalcTextSize             = void function(ImVec2* pOut, const char* text, const char* text_end = null, bool hide_text_after_double_hash = false, float wrap_width = -1.0f);
-    alias da_igCalcListClipping         = void              function(int items_count, float items_height, int* out_items_display_start, int* out_items_display_end);
+    alias da_igGetStyleColName              = const(char)*      function(ImGuiCol idx);
+    alias da_igCalcItemRectClosestPoint     = void function(ImVec2* pOut, const ImVec2 pos, bool on_edge = false, float outward = +0.0f);
+    alias da_igCalcTextSize                 = void function(ImVec2* pOut, const(char)* text, const(char)* text_end = null, bool hide_text_after_double_hash = false, float wrap_width = -1.0f);
+    alias da_igCalcListClipping             = void              function(int items_count, float items_height, int* out_items_display_start, int* out_items_display_end);
 
     alias da_igBeginChildFrame              = bool              function(ImGuiID id, const ImVec2 size);
     alias da_igEndChildFrame                = void              function();
 
-    alias da_igColorConvertFloat4ToU32      = ImU32 function(const ImVec4 in_);
-    alias da_igColorConvertRGBtoHSV     = void function(float r, float g, float b, float* out_h, float* out_s, float* out_v);
-    alias da_igColorConvertHSVtoRGB     = void function(float h, float s, float v, float* out_r, float* out_g, float* out_b);
+    alias da_igColorConvertU32ToFloat4      = void              function(ImU32 in_, ImVec4* pOut);
+    alias da_igColorConvertFloat4ToU32      = ImU32             function(const ImVec4 in_);
+    alias da_igColorConvertRGBtoHSV         = void              function(float r, float g, float b, float* out_h, float* out_s, float* out_v);
+    alias da_igColorConvertHSVtoRGB         = void              function(float h, float s, float v, float* out_r, float* out_g, float* out_b);
+
+    alias da_igGetKeyIndex                  = int               function(ImGuiKey key);
+    alias da_igIsKeyDown                    = bool              function(int key_index);
+    alias da_igIsKeyPressed                 = bool              function(int key_index, bool repeat = true);
+    alias da_igIsKeyReleased                = bool              function(int key_index);
+    alias da_igIsMouseDown                  = bool              function(int button);
+    alias da_igIsMouseClicked               = bool              function(int button, bool repeat = false);
+    alias da_igIsMouseDoubleClicked         = bool              function(int button);
+    alias da_igIsMouseReleased              = bool              function(int button);
+    alias da_igIsMouseHoveringWindow        = bool              function();
+    alias da_igIsMouseHoveringAnyWindow     = bool              function();
+    alias da_igIsMouseHoveringRect          = bool              function(const ImVec2 rect_min, const ImVec2 rect_max, bool clip = true);
+    alias da_igIsMouseDragging              = bool              function(int button = 0, float lock_threshold = -1.0f);
+    alias da_igGetMousePosOnOpeningCurrentPopup = void          function(ImVec2* pOut);
+    alias da_igGetMousePos                  = void              function(ImVec2* pOut);
+    alias da_igGetMouseDragDelta            = void              function(ImVec2* pOut, int button = 0, float lock_threshold = -1.0f);
+    alias da_igResetMouseDragDelta          = void              function(int button=0);
+    alias da_igGetMouseCursor               = ImGuiMouseCursor  function();
+    alias da_igSetMouseCursor               = void              function(ImGuiMouseCursor type);
+    alias da_igCaptureKeyboardFromApp       = void              function();
+    alias da_igCaptureMouseFromApp          = void              function();
+
+    alias da_igMemAlloc                     = void*             function(size_t sz);
+    alias da_igMemFree                      = void              function(void* ptr);
 
     alias da_igGetVersion                   = const(char)*      function();
-    alias da_igGetInternalState         = void*         function();
-    alias da_igGetInternalStateSize     = size_t            function();
-    alias da_igSetInternalState         = void              function(void* state, bool construct = false);
+    alias da_igGetInternalState             = void*             function();
+    alias da_igGetInternalStateSize         = size_t            function();
+    alias da_igSetInternalState             = void              function(void* state, bool construct = false);
+}
+
+extern(C) @nogc nothrow
+{
+    alias da_ImGuiStyle_Init = void function(ImGuiStyle* style);
+
+    alias da_ImGuiIO_AddInputCharacter = void function(ushort c);
+    alias da_ImGuiIO_AddInputCharactersUTF8 = void function(const(char)* utf8_chars);
+}
+
+extern(C) @nogc nothrow
+{
+    alias da_ImGuiTextFilter_GetFiltersSize = int              function(
+    ImGuiTextFilter* filter);
+    alias da_ImGuiTextFilter_GetFiltersPtr = ImGuiTextFilterTextRange* function(
+    ImGuiTextFilter* filter, int n);
+    alias da_ImGuiTextFilter_Clear = void             function(ImGuiTextFilter* filter);
+    alias da_ImGuiTextFilter_Draw = void             function(ImGuiTextFilter* filter,
+                                                 const(char)* label,
+                                                 float width);
+    alias da_ImGuiTextFilter_PassFilter = bool             function(
+        const(ImGuiTextFilter)* filter, const(char)* text, const(char)* text_end);
+    alias da_ImGuiTextFilter_IsActive = bool             function(
+        const(ImGuiTextFilter)* filter);
+    alias da_ImGuiTextFilter_Build = void             function(ImGuiTextFilter* filter);
+}
+
+extern(C) @nogc nothrow
+{
+    alias da_ImGuiStorage_GetDataSize = int function(ImGuiStorage* storage);
+    alias da_ImGuiStorage_GetDataPtr = ImGuiStoragePair* function(ImGuiStorage* storage,
+                                                     int n);
+    alias da_ImGuiStorage_Clear = void function(ImGuiStorage* storage);
+    alias da_ImGuiStorage_GetInt = int function(const(ImGuiStorage)* storage,
+                                   ImGuiID key, int default_val = 0);
+    alias da_ImGuiStorage_SetInt = void function(ImGuiStorage* storage, ImGuiID key,
+                                    int val);
+    alias da_ImGuiStorage_GetFloat = float function(const(ImGuiStorage)* storage,
+                                       ImGuiID key, float default_val);
+    alias da_ImGuiStorage_SetFloat = void function(ImGuiStorage* storage,
+                                      ImGuiID key, float val);
+    alias da_ImGuiStorage_GetVoidPtr = void* function(const(ImGuiStorage)* storage,
+                                         ImGuiID key);
+    alias da_ImGuiStorage_SetVoidPtr = void function(ImGuiStorage* storage,
+                                        ImGuiID key, void* val);
+    alias da_ImGuiStorage_GetIntRef = int*  function(ImGuiStorage* storage,
+                                        ImGuiID key, int default_val);
+    alias da_ImGuiStorage_GetFloatRef = float* function(ImGuiStorage* storage,
+                                           ImGuiID key, float default_val);
+    alias da_ImGuiStorage_GetVoidPtrRef = void** function(ImGuiStorage* storage,
+                                             ImGuiID key, void* default_val);
+    alias da_ImGuiStorage_SetAllInt = void function(ImGuiStorage* storage, int val);
+
+    alias da_ImGuiTextEditCallbackData_DeleteChars = void function(
+    ImGuiTextEditCallbackData* data, int pos, int bytes_count);
+    alias da_ImGuiTextEditCallbackData_InsertChars = void function(
+    ImGuiTextEditCallbackData* data, int pos,
+    const(char)* text, const(char)* text_end);
+    alias da_ImGuiTextEditCallbackData_HasSelection = bool function(
+        const(ImGuiTextEditCallbackData)* data);
+}
+
+extern(C) @nogc nothrow
+{
+    alias da_ImGuiListClipper_Init = void function(ImGuiListClipper* clipper);
+    alias da_ImGuiListClipper_Init2 = void function(ImGuiListClipper* clipper,
+                                       int count, float height);
+    alias da_ImGuiListClipper_Destroy = void function(ImGuiListClipper* clipper);
+    alias da_ImGuiListClipper_Begin = void function(ImGuiListClipper* clipper,
+                                       int count, float height);
+    alias da_ImGuiListClipper_End = void function(ImGuiListClipper* clipper);
+}
+
+extern(C) @nogc nothrow
+{
+    alias da_ImDrawList_GetCmdSize = int function(ImDrawList* list);
+    alias da_ImDrawList_GetCmdPtr = ImDrawCmd* function(ImDrawList* list, int n);
+    alias da_ImDrawList_GetIndexBufferSize = int function(ImDrawList* list);
+    alias da_ImDrawList_GetIndexPtr = ImDrawIdx* function(ImDrawList* list, int n);
+    alias da_ImDrawList_GetVertexBufferSize = int function(ImDrawList* list);
+    alias da_ImDrawList_GetVertexPtr = ImDrawVert* function(ImDrawList* list, int n);
+
+    alias da_ImDrawList_Clear = void function(ImDrawList* list);
+    alias da_ImDrawList_ClearFreeMemory = void function(ImDrawList* list);
+    alias da_ImDrawList_PushClipRect = void function(ImDrawList* list,
+                                        const ImVec4 clip_rect);
+    alias da_ImDrawList_PushClipRectFullScreen = void function(ImDrawList* list);
+    alias da_ImDrawList_PopClipRect = void function(ImDrawList* list);
+    alias da_ImDrawList_PushTextureID = void function(ImDrawList* list,
+                                         const ImTextureID texture_id);
+    alias da_ImDrawList_PopTextureID = void function(ImDrawList* list);
+
+// Primitives
+    alias da_ImDrawList_AddLine = void function(ImDrawList* list,
+                                   const ImVec2 a, const ImVec2 b,
+                                   ImU32 col, float thickness);
+    alias da_ImDrawList_AddRect = void function(ImDrawList* list,
+                                   const ImVec2 a, const ImVec2 b, ImU32 col,
+                                   float rounding, int rounding_corners);
+    alias da_ImDrawList_AddRectFilled = void function(ImDrawList* list,
+                                         const ImVec2 a, const ImVec2 b,
+                                         ImU32 col, float roundingf,
+                                         int rounding_corners);
+    alias da_ImDrawList_AddRectFilledMultiColor = void function(ImDrawList* list,
+                                                   const ImVec2 a,
+                                                   const ImVec2 b,
+                                                   ImU32 col_upr_left,
+                                                   ImU32 col_upr_right,
+                                                   ImU32 col_bot_right,
+                                                   ImU32 col_bot_left);
+    alias da_ImDrawList_AddTriangleFilled = void function(ImDrawList* list,
+                                             const ImVec2 a, const ImVec2 b,
+                                             const ImVec2 c, ImU32 col);
+    alias da_ImDrawList_AddCircle = void function(ImDrawList* list,
+                                     const ImVec2 centre, float radius,
+                                     ImU32 col, int num_segments);
+    alias da_ImDrawList_AddCircleFilled = void function(ImDrawList* list,
+                                           const ImVec2 centre, float radius,
+                                           ImU32 col, int num_segments);
+    alias da_ImDrawList_AddText = void function(ImDrawList* list,
+                                   const ImVec2 pos, ImU32 col,
+                                   const(char)* text_begin, const(char)* text_end);
+    alias da_ImDrawList_AddText2 = void function(ImDrawList* list,
+                                                 const(ImFont)* font, float font_size,
+                                    const ImVec2 pos, ImU32 col,
+                                    const(char)* text_begin,
+                                    const(char)* text_end,
+                                    float wrap_width,
+                                                 const(ImVec4)* cpu_fine_clip_rect);
+    alias da_ImDrawList_AddImage = void function(ImDrawList* list,
+                                    ImTextureID user_texture_id, const ImVec2 a,
+                                    const ImVec2 b, const ImVec2 uv0,
+                                    const ImVec2 uv1, ImU32 col);
+    alias da_ImDrawList_AddPolyline = void function(ImDrawList* list,
+                                                    const(ImVec2)* points,
+                                       const int num_points, ImU32 col,
+                                       bool closed, float thickness,
+                                       bool anti_aliased);
+    alias da_ImDrawList_AddConvexPolyFilled = void function(ImDrawList* list,
+                                                            const(ImVec2)* points,
+                                               const int num_points, ImU32 col,
+                                               bool anti_aliased);
+    alias da_ImDrawList_AddBezierCurve = void function(ImDrawList* list,
+                                          const ImVec2 pos0, const ImVec2 cp0,
+                                          const ImVec2 cp1, const ImVec2 pos1,
+                                          ImU32 col,
+                                          float thickness, int num_segments);
+
+// Stateful path API, add points then finish with PathFill() or PathStroke()
+    alias da_ImDrawList_PathClear = void function(ImDrawList* list);
+    alias da_ImDrawList_PathLineTo = void function(ImDrawList* list, const ImVec2 pos);
+    alias da_ImDrawList_PathLineToMergeDuplicate = void function(ImDrawList* list,
+                                                    const ImVec2 pos);
+    alias da_ImDrawList_PathFill = void function(ImDrawList* list, ImU32 col);
+    alias da_ImDrawList_PathStroke = void function(ImDrawList* list, ImU32 col, bool closed,
+                                      float thickness);
+    alias da_ImDrawList_PathArcTo = void function(ImDrawList* list, const ImVec2 centre,
+                                     float radius, float a_min, float a_max,
+                                     int num_segments);
+    alias da_ImDrawList_PathArcToFast = void function(ImDrawList* list, const ImVec2 centre,
+                                         float radius,
+                                         int a_min_of_12, int a_max_of_12);
+    alias da_ImDrawList_PathBezierCurveTo = void function(ImDrawList* list,
+                                             const ImVec2 p1, const ImVec2 p2,
+                                             const ImVec2 p3, int num_segments);
+    alias da_ImDrawList_PathRect = void function(ImDrawList* list,
+                                    const ImVec2 rect_min, const ImVec2 rect_max,
+                                    float rounding, int rounding_corners);
+
+// Channels
+    alias da_ImDrawList_ChannelsSplit = void function(ImDrawList* list, int channels_count);
+    alias da_ImDrawList_ChannelsMerge = void function(ImDrawList* list);
+    alias da_ImDrawList_ChannelsSetCurrent = void function(ImDrawList* list,
+                                              int channel_index);
+
+// Advanced
+    alias da_ImDrawList_AddCallback = void function(ImDrawList* list,
+                                       ImDrawCallback callback,
+                                       void* callback_data);
+    alias da_ImDrawList_AddDrawCmd = void function(ImDrawList* list);
+
+// Internal helpers
+    alias da_ImDrawList_PrimReserve = void function(ImDrawList* list,
+                                       int idx_count, int vtx_count);
+    alias da_ImDrawList_PrimRect = void function(ImDrawList* list,
+                                    const ImVec2 a, const ImVec2 b, ImU32 col);
+    alias da_ImDrawList_PrimRectUV = void function(ImDrawList* list,
+                                      const ImVec2 a, const ImVec2 b,
+                                      const ImVec2 uv_a, const ImVec2 uv_b,
+                                      ImU32 col);
+    alias da_ImDrawList_PrimVtx = void function(ImDrawList* list, const ImVec2 pos,
+                                   const ImVec2 uv, ImU32 col);
+    alias da_ImDrawList_PrimWriteVtx = void function(ImDrawList* list, const ImVec2 pos,
+                                        const ImVec2 uv, ImU32 col);
+    alias da_ImDrawList_PrimWriteIdx = void function(ImDrawList* list, ImDrawIdx idx);
+    alias da_ImDrawList_UpdateClipRect = void function(ImDrawList* list);
+    alias da_ImDrawList_UpdateTextureID = void function(ImDrawList* list);
+
+    alias da_ImDrawData_DeIndexAllBuffers = void function(ImDrawData* drawData);
+    alias da_ImDrawData_ScaleClipRects = void             function(ImDrawData* drawData,
+                                                      const ImVec2 sc);
+}
+
+extern(C) @nogc nothrow
+{
+    alias da_ImFont_GetGlyphsSize = int function(ImFont* font);
+    alias da_ImFont_GetGlyphPtr = ImFontGlyph* function(ImFont* font, int n);
+    alias da_ImFont_GetIndexXAdvanceSize = int function(ImFont* font);
+    alias da_ImFont_GetIndexXAdvancePtr = float* function(ImFont* font, int n);
+    alias da_ImFont_GetIndexLookupSize = int function(ImFont* font);
+    alias da_ImFont_GetIndexLookupPtr = int* function(ImFont* font, int n);
+    alias da_ImFont_Clear = void function(ImFont* font);
+    alias da_ImFont_BuildLookupTable = void function(ImFont* font);
+    alias da_ImFont_GetCharAdvance = float function(ImFont* font, ushort c);
+    alias da_ImFont_FindGlyph = const(ImFontGlyph)* function(const(ImFont)* font,
+                                               ushort c);
+    alias da_ImFont_SetFallbackChar = void function(ImFont* font, ImWchar c);
+    alias da_ImFont_IsLoaded = bool function(const(ImFont)* font);
+    alias da_ImFont_CalcTextSizeA = void function(const(ImFont)* font, float size,
+                                     float max_width, float wrap_width,
+                                     const(char)* text_begin,
+                                     const(char)* text_end,
+                                     const(char*)* remaining, ImVec2* pOut);
+    alias da_ImFont_CalcWordWrapPositionA = const(char)* function(const(ImFont)* font,
+                                                    float scale,
+                                                    const(char)* text,
+                                                    const(char)* text_end,
+                                                    float wrap_width);
+    alias da_ImFont_RenderText = void function(const(ImFont)* font, float size, ImVec2 pos,
+                                  ImU32 col, const ImVec4 clip_rect,
+                                  const(char)* text_begin, const(char)* text_end,
+                                  ImDrawList* draw_list, float wrap_width,
+                                  bool cpu_fine_clip);
 }
 
 // ImFontAtlas Methods
 extern(C) @nogc nothrow
 {
+    alias da_ImFontAtlas_AddFont              = ImFont* function(ImFontAtlas* atlas, const(ImFontConfig)* font_cfg);
+    alias da_ImFontAtlas_AddFontDefault       = ImFont* function(ImFontAtlas* atlas, const(ImFontConfig)* font_cfg);
+    alias da_ImFontAtlas_AddFontFromFileTTF   = ImFont* function(ImFontAtlas* atlas, const(char)* filename, float size_pixels, const(ImFontConfig)* font_cfg, const(ImWchar)* glyph_ranges = null);
+    alias da_ImFontAtlas_AddFontFromMemoryTTF = ImFont* function(ImFontAtlas* atlas, void* ttf_data, int ttf_size, float size_pixels, const(ImFontConfig)* font_cfg, const(ImWchar)* glyph_ranges = null);
+    alias da_ImFontAtlas_AddFontFromMemoryCompressedTTF = ImFont* function(ImFontAtlas* atlas, const(void)* compressed_ttf_data, int compressed_ttf_size, float size_pixels, const(ImFontConfig)* font_cfg = null, const(ImWchar)* glyph_ranges = null);
+    alias da_ImFontAtlas_AddFontFromMemoryCompressedBase85TTF = ImFont* function(ImFontAtlas* atlas, const(char)* compressed_ttf_data_base85, float size_pixels, const(ImFontConfig)* font_cfg = null, const(ImWchar)* glyph_ranges = null);
+
+    alias da_ImFontAtlas_ClearTexData         = void function(ImFontAtlas* atlas);
+    alias da_ImFontAtlas_ClearInputData       = void function(ImFontAtlas* atlas);
+    alias da_ImFontAtlas_ClearFonts           = void function(ImFontAtlas* atlas);
+    alias da_ImFontAtlas_Clear                = void function(ImFontAtlas* atlas);
     alias da_ImFontAtlas_GetTexDataAsRGBA32   = void function(ImFontAtlas* atlas,ubyte** out_pixels,int* out_width,int* out_height,int* out_bytes_per_pixel);
     alias da_ImFontAtlas_GetTexDataAsAlpha8   = void function(ImFontAtlas* atlas,ubyte** out_pixels,int* out_width,int* out_height,int* out_bytes_per_pixel);
-    alias da_ImFontAtlas_SetTexID             = void function(ImFontAtlas* atlas, void* id);
-    alias da_ImFontAtlas_AddFont       = ImFont* function(ImFontAtlas* atlas, const ImFontConfig* font_cfg);
-    alias da_ImFontAtlas_AddFontDefault       = ImFont* function(ImFontAtlas* atlas, const ImFontConfig* font_cfg);
-    alias da_ImFontAtlas_AddFontFromFileTTF   = ImFont* function(ImFontAtlas* atlas, const char* filename, float size_pixels, const ImFontConfig* font_cfg, const ImWchar* glyph_ranges = null);
-    alias da_ImFontAtlas_AddFontFromMemoryTTF = ImFont* function(ImFontAtlas* atlas, void* ttf_data, int ttf_size, float size_pixels, const ImFontConfig* font_cfg, const ImWchar* glyph_ranges = null);
-    alias da_ImFontAtlas_AddFontFromMemoryCompressedTTF = ImFont* function(ImFontAtlas* atlas, const void* compressed_ttf_data, int compressed_ttf_size, float size_pixels, const ImFontConfig* font_cfg = null, const ImWchar* glyph_ranges = null);
-	alias da_ImFontAtlas_AddFontFromMemoryCompressedBase85TTF = ImFont* function(ImFontAtlas* atlas, const char* compressed_ttf_data_base85, float size_pixels, const ImFontConfig* font_cfg = null, const ImWchar* glyph_ranges = null);
+    alias da_ImFontAtlas_SetTexID             = void function(ImFontAtlas* atlas, void* tex);
 
-    alias da_ImFontAtlas_ClearTexData         = void function(ImFontAtlas* atlas, void* id);
-    alias da_ImFontAtlas_Clear                = void function(ImFontAtlas* atlas, void* id);
+    alias da_ImFontAtlas_GetGlyphRangesDefault = const(ImWchar)* function(ImFontAtlas* atlas);
+    alias da_ImFontAtlas_GetGlyphRangesJapanese = const(ImWchar)* function(ImFontAtlas* atlas);
+    alias da_ImFontAtlas_GetGlyphRangesChinese = const(ImWchar)* function(ImFontAtlas* atlas);
+    alias da_ImFontAtlas_GetGlyphRangesCyrillic = const(ImWchar)* function(ImFontAtlas* atlas);
 }
 
-//TODO: rework
 extern(C) @nogc nothrow
 {
-    alias da_ImDrawList_GetVertexBufferSize = int function(ImDrawList* list);
-    alias da_ImDrawList_GetVertexPtr = ImDrawVert* function(ImDrawList* list, int n);
-    alias da_ImDrawList_GetIndexBufferSize = int function(ImDrawList* list);
-    alias da_ImDrawList_GetIndexPtr = ImDrawIdx* function(ImDrawList* list, int n);
-    alias da_ImDrawList_GetCmdSize = int function(ImDrawList* list);
-    alias da_ImDrawList_GetCmdPtr = ImDrawCmd* function(ImDrawList* list, int n);
+    alias da_ImGuiWindow_GetID = ImGuiID function(ImGuiWindow* window, const(char)* str, const(char)* str_end = null);
+    alias da_ImGuiWindow_GetIDPtr = ImGuiID function(ImGuiWindow* window, const(void)* ptr);
 
-    alias da_ImDrawData_DeIndexAllBuffers = void function(ImDrawData* drawData);
+    alias da_ImGuiWindow_Rect = void function(const(ImGuiWindow)* window, ImRect* pOut);
+    alias da_ImGuiWindow_CalcFontSize = float function(const(ImGuiWindow)* window);
+    alias da_ImGuiWindow_TitleBarHeight = float function(const(ImGuiWindow)* window);
+    alias da_ImGuiWindow_TitleBarRect = void function(const(ImGuiWindow)* window, ImRect* pOut);
+    alias da_ImGuiWindow_MenuBarHeight = float function(const(ImGuiWindow)* window);
+    alias da_ImGuiWindow_MenuBarRect = void function(const(ImGuiWindow)* window, ImRect* pOut);
+    alias da_ImGuiWindow_Color = ImU32 function(const(ImGuiWindow)* window, ImGuiCol idx, float a=1);
+    alias da_ImGuiWindow_ColorVec = ImU32 function(const(ImGuiWindow)* window, const ImVec4 col);
 
-    alias da_ImGuiIO_AddInputCharacter = void function(ushort c);
-    alias da_ImGuiIO_AddInputCharactersUTF8 = void function(const(char*) utf8_chars);
+//-----------------------------------------------------------------------------
+// Internal API
+// No guarantee of forward compatibility here.
+//-----------------------------------------------------------------------------
+
+    alias da_igGetCurrentWindowRead = ImGuiWindow*  function();
+    alias da_igGetCurrentWindow = ImGuiWindow*  function();
+
+    alias da_igGetParentWindow = ImGuiWindow*  function();
+    alias da_igFocusWindow = void          function(ImGuiWindow* window);
+
+    alias da_igSetActiveID = void          function(ImGuiID id, ImGuiWindow* window);
+    alias da_igKeepAliveID = void          function(ImGuiID id);
+
+    alias da_igItemSize = void          function(const ImVec2 size,
+                                    float text_offset_y = 0.0f);
+    alias da_igItemSizeRect = void          function(const ImRect bb,
+                                        float text_offset_y = 0.0f);
+    alias da_igItemAdd = bool          function(const ImRect bb, const ImGuiID* id);
+    alias da_igIsClippedEx = bool          function(const ImRect bb, const ImGuiID* id,
+                                       bool clip_even_when_logged);
+    alias da_igIsHovered = bool          function(const ImRect bb, ImGuiID id,
+                                     bool flatten_childs = false);
+    alias da_igFocusableItemRegister = bool          function(ImGuiWindow* window,
+                                                 bool is_active,
+                                                 bool tab_stop = true);
+    alias da_igFocusableItemUnregister = void          function(ImGuiWindow* window);
+    alias da_igCalcItemSize = void          function(ImVec2 size, float default_x,
+                                        float default_y, ImVec2* pOut);
+    alias da_igCalcWrapWidthForPos = float         function(const ImVec2 pos,
+                                               float wrap_pos_x);
+
+// NB: All position are in absolute pixels coordinates (not window coordinates)
+    alias da_igRenderText = void          function(ImVec2 pos,const(char)* text,
+                                      const(char)* text_end = null,
+                                      bool hide_text_after_hash = true);
+    alias da_igRenderTextWrapped = void          function(ImVec2 pos, const(char)* text,
+                                             const(char)* text_end,
+                                             float wrap_width);
+    alias da_igRenderTextClipped = void          function(
+    const ImVec2 pos_min, const ImVec2 pos_max, const(char)* text,
+    const(char)* text_end, const(ImVec2)* text_size_if_known,
+    ImGuiAlign align_ = ImGuiAlign_Default, const(ImVec2)* clip_min = null,
+    const(ImVec2)* clip_max = null);
+    alias da_igRenderFrame = void          function(ImVec2 p_min, ImVec2 p_max,
+                                       ImU32 fill_col, bool border = true,
+                                       float rounding = 0.0f);
+    alias da_igRenderCollapseTriangle = void          function(ImVec2 p_min, bool opened,
+                                                  float scale = 1.0f,
+                                                  bool shadow = false);
+    alias da_igRenderCheckMark = void          function(ImVec2 pos, ImU32 col);
+
+    alias da_igButtonBehavior = bool          function(const ImRect bb, ImGuiID id,
+                                          bool* out_hovered, bool* out_held,
+                                          bool allow_key_modifiers,
+                                          ImGuiButtonFlags flags = 0);
+    alias da_igButtonEx = bool          function(const(char)* label,
+                                    const ImVec2 size_arg = ImVec2(0,0),
+                                    ImGuiButtonFlags flags = 0);
+
+    alias da_igSliderBehavior = bool          function(const ImRect frame_bb, ImGuiID id,
+                                          float* v, float v_min, float v_max,
+                                          float power, int decimal_precision,
+                                          bool horizontal);
+    alias da_igSliderFloatN = bool          function(const(char)* label, float* v,
+                                        int components, float v_min,
+                                        float v_max, const(char)* display_format,
+                                        float power);
+    alias da_igSliderIntN = bool          function(const(char)* label, int* v, int components,
+                                      int v_min, int v_max,
+                                      const(char)* display_format);
+
+    alias da_igDragBehavior                   = bool function(const ImRect frame_bb, ImGuiID id, float* v, float v_speed, float v_min, float v_max, int decimal_precision, float power);
+    alias da_igDragFloatN                     = bool function(const(char)* label, float* v, int components, float v_speed, float v_min, float v_max, const(char)* display_format, float power);
+    alias da_igDragIntN                       = bool function(const(char)* label, int* v, int components, float v_speed, int v_min, int v_max, const(char)* display_format);
+
+    alias da_igInputTextEx                    = bool function(const(char)* label, char* buf, int buf_size, const ImVec2 size_arg, ImGuiInputTextFlags flags, ImGuiTextEditCallback callback = null, void* user_data = null);
+    alias da_igInputFloatN                    = bool function(const(char)* label, float* v, int components, int decimal_precision, ImGuiInputTextFlags extra_flags);
+    alias da_igInputIntN                      = bool function(const(char)* label, int* v, int components, ImGuiInputTextFlags extra_flags);
+    alias da_igInputScalarEx                  = bool function(const(char)* label, ImGuiDataType data_type, void* data_ptr, void* step_ptr, void* step_fast_ptr, const(char)* scalar_format, ImGuiInputTextFlags extra_flags);
+    alias da_igInputScalarAsWidgetReplacement = bool function(const ImRect aabb, const(char)* label, ImGuiDataType data_type, void* data_ptr, ImGuiID id, int decimal_precision);
+
+    alias da_igTreeNodeBehaviorIsOpened       = bool function(ImGuiID id, ImGuiTreeNodeFlags flags = 0);
+
+    alias da_igPlotEx                         = void function(ImGuiPlotType plot_type, const(char)* label, float function(void* data, int idx) values_getter, void* data, int values_count, int values_offset, const(char)* overlay_text, float scale_min, float scale_max, ImVec2 graph_size);
+
+    alias da_igParseFormatPrecision           = int function(const(char)* fmt, int default_value);
+    alias da_igRoundScalar                    = float function(float value, int decimal_precision);
 }
 
 __gshared
@@ -379,9 +723,11 @@ __gshared
     da_igBeginChildEx igBeginChildEx;
     da_igEndChild igEndChild;
     da_igGetContentRegionMax igGetContentRegionMax;
-	da_igGetContentRegionAvail igGetContentRegionAvail;
+    da_igGetContentRegionAvail igGetContentRegionAvail;
+    da_igGetContentRegionAvailWidth igGetContentRegionAvailWidth;
     da_igGetWindowContentRegionMin igGetWindowContentRegionMin;
     da_igGetWindowContentRegionMax igGetWindowContentRegionMax;
+    da_igGetWindowContentRegionWidth igGetWindowContentRegionWidth;
     da_igGetWindowDrawList igGetWindowDrawList;
     da_igGetWindowFont igGetWindowFont;
     da_igGetWindowFontSize igGetWindowFontSize;
@@ -389,11 +735,14 @@ __gshared
     da_igGetWindowPos igGetWindowPos;
     da_igGetWindowSize igGetWindowSize;
     da_igGetWindowWidth igGetWindowWidth;
+    da_igGetWindowHeight igGetWindowHeight;
     da_igIsWindowCollapsed igIsWindowCollapsed;
 
     da_igSetNextWindowPos igSetNextWindowPos;
     da_igSetNextWindowPosCenter igSetNextWindowPosCenter;
     da_igSetNextWindowSize igSetNextWindowSize;
+    da_igSetNextWindowContentSize igSetNextWindowContentSize;
+    da_igSetNextWindowContentWidth igSetNextWindowContentWidth;
     da_igSetNextWindowCollapsed igSetNextWindowCollapsed;
     da_igSetNextWindowFocus igSetNextWindowFocus;
     da_igSetWindowPos igSetWindowPos;
@@ -404,8 +753,10 @@ __gshared
     da_igSetWindowSize2 igSetWindowSize2;
     da_igSetWindowCollapsed2 igSetWindowCollapsed2;
     da_igSetWindowFocus2 igSetWindowFocus2;
-    
+
+    da_igGetScrollX igGetScrollX;
     da_igGetScrollY igGetScrollY;
+    da_igGetScrollMaxX igGetScrollMaxX;
     da_igGetScrollMaxY igGetScrollMaxY;
     da_igSetScrollY igSetScrollY;
     da_igSetScrollHere igSetScrollHere;
@@ -430,21 +781,7 @@ __gshared
     da_igPushTextWrapPos igPushTextWrapPos;
     da_igPopTextWrapPos igPopTextWrapPos;
     da_igPushButtonRepeat igPushButtonRepeat;
-    da_igPopButtonRepeat igPopButtonRepeat; 
-
-    da_igSetTooltip igSetTooltip;
-    da_igSetTooltipV igSetTooltipV;
-    da_igBeginTooltip igBeginTooltip;
-    da_igEndTooltip igEndTooltip;
-
-    da_igOpenPopup igOpenPopup;
-    da_igBeginPopup igBeginPopup;
-    da_igBeginPopupModal igBeginPopupModal;
-    da_igBeginPopupContextItem igBeginPopupContextItem;  
-    da_igBeginPopupContextWindow igBeginPopupContextWindow;
-    da_igBeginPopupContextVoid igBeginPopupContextVoid;
-    da_igEndPopup igEndPopup;
-    da_igCloseCurrentPopup igCloseCurrentPopup;
+    da_igPopButtonRepeat igPopButtonRepeat;
 
     da_igBeginGroup igBeginGroup;
     da_igEndGroup igEndGroup;
@@ -553,7 +890,7 @@ __gshared
     da_igInputInt2 igInputInt2;
     da_igInputInt3 igInputInt3;
     da_igInputInt4 igInputInt4;
-            
+
     da_igTreeNode igTreeNode;
     da_igTreeNodeStr igTreeNodeStr;
     da_igTreeNodePtr igTreeNodePtr;
@@ -581,12 +918,26 @@ __gshared
     da_igMenuItem          igMenuItem;
     da_igMenuItemPtr       igMenuItemPtr;
 
+    da_igOpenPopup igOpenPopup;
+    da_igBeginPopup igBeginPopup;
+    da_igBeginPopupModal igBeginPopupModal;
+    da_igBeginPopupContextItem igBeginPopupContextItem;
+    da_igBeginPopupContextWindow igBeginPopupContextWindow;
+    da_igBeginPopupContextVoid igBeginPopupContextVoid;
+    da_igEndPopup igEndPopup;
+    da_igCloseCurrentPopup igCloseCurrentPopup;
+
     da_igValueBool igValueBool;
     da_igValueInt igValueInt;
     da_igValueUInt igValueUInt;
     da_igValueFloat igValueFloat;
     da_igColor igColor;
     da_igColor2 igColor2;
+
+    da_igSetTooltip igSetTooltip;
+    da_igSetTooltipV igSetTooltipV;
+    da_igBeginTooltip igBeginTooltip;
+    da_igEndTooltip igEndTooltip;
 
     da_igLogToTTY igLogToTTY;
     da_igLogToFile igLogToFile;
@@ -609,6 +960,23 @@ __gshared
     da_igIsRootWindowFocused igIsRootWindowFocused;
     da_igIsRootWindowOrAnyChildFocused igIsRootWindowOrAnyChildFocused;
     da_igIsRectVisible igIsRectVisible;
+    da_igIsPosHoveringAnyWindow igIsPosHoveringAnyWindow;
+    da_igGetTime igGetTime;
+    da_igGetFrameCount igGetFrameCount;
+    da_igGetStyleColName igGetStyleColName;
+    da_igCalcItemRectClosestPoint igCalcItemRectClosestPoint;
+    da_igCalcTextSize igCalcTextSize;
+    da_igCalcListClipping igCalcListClipping;
+
+    da_igBeginChildFrame igBeginChildFrame;
+    da_igEndChildFrame igEndChildFrame;
+
+    da_igColorConvertU32ToFloat4 igColorConvertU32ToFloat4;
+    da_igColorConvertFloat4ToU32 igColorConvertFloat4ToU32;
+    da_igColorConvertRGBtoHSV igColorConvertRGBtoHSV;
+    da_igColorConvertHSVtoRGB igColorConvertHSVtoRGB;
+
+    da_igGetKeyIndex igGetKeyIndex;
     da_igIsKeyDown igIsKeyDown;
     da_igIsKeyPressed igIsKeyPressed;
     da_igIsKeyReleased igIsKeyReleased;
@@ -620,25 +988,17 @@ __gshared
     da_igIsMouseHoveringAnyWindow igIsMouseHoveringAnyWindow;
     da_igIsMouseHoveringRect igIsMouseHoveringRect;
     da_igIsMouseDragging igIsMouseDragging;
-    da_igIsPosHoveringAnyWindow igIsPosHoveringAnyWindow;
+    da_igGetMousePosOnOpeningCurrentPopup igGetMousePosOnOpeningCurrentPopup;
     da_igGetMousePos igGetMousePos;
     da_igGetMouseDragDelta igGetMouseDragDelta;
     da_igResetMouseDragDelta igResetMouseDragDelta;
     da_igGetMouseCursor igGetMouseCursor;
     da_igSetMouseCursor igSetMouseCursor;
-    da_igGetTime igGetTime;
-    da_igGetFrameCount igGetFrameCount;
-    da_igGetStyleColName igGetStyleColName;
-    da_igCalcItemRectClosestPoint igCalcItemRectClosestPoint;
-    da_igCalcTextSize igCalcTextSize;
-    da_igCalcListClipping igCalcListClipping;
+    da_igCaptureKeyboardFromApp igCaptureKeyboardFromApp;
+    da_igCaptureMouseFromApp igCaptureMouseFromApp;
 
-    da_igBeginChildFrame igBeginChildFrame;
-    da_igEndChildFrame igEndChildFrame;
-
-    da_igColorConvertFloat4ToU32 igColorConvertFloat4ToU32;
-    da_igColorConvertRGBtoHSV igColorConvertRGBtoHSV;
-    da_igColorConvertHSVtoRGB igColorConvertHSVtoRGB;
+    da_igMemAlloc igMemAlloc;
+    da_igMemFree igMemFree;
 
     da_igGetVersion igGetVersion;
     da_igGetInternalState igGetInternalState;
@@ -648,31 +1008,225 @@ __gshared
 
 __gshared
 {
-    da_ImFontAtlas_GetTexDataAsRGBA32       ImFontAtlas_GetTexDataAsRGBA32;
-    da_ImFontAtlas_GetTexDataAsAlpha8       ImFontAtlas_GetTexDataAsAlpha8;
-    da_ImFontAtlas_SetTexID                 ImFontAtlas_SetTexID;
+    da_ImGuiStyle_Init ImGuiStyle_Init;
+
+    da_ImGuiIO_AddInputCharacter ImGuiIO_AddInputCharacter;
+    da_ImGuiIO_AddInputCharactersUTF8 ImGuiIO_AddInputCharactersUTF8;
+}
+
+__gshared
+{
+    da_ImGuiTextFilter_GetFiltersSize ImGuiTextFilter_GetFiltersSize;
+    da_ImGuiTextFilter_GetFiltersPtr ImGuiTextFilter_GetFiltersPtr;
+    da_ImGuiTextFilter_Clear ImGuiTextFilter_Clear;
+    da_ImGuiTextFilter_Draw ImGuiTextFilter_Draw;
+    da_ImGuiTextFilter_PassFilter ImGuiTextFilter_PassFilter;
+    da_ImGuiTextFilter_IsActive ImGuiTextFilter_IsActive;
+    da_ImGuiTextFilter_Build ImGuiTextFilter_Build;
+}
+
+__gshared
+{
+    da_ImGuiStorage_GetDataSize ImGuiStorage_GetDataSize;
+    da_ImGuiStorage_GetDataPtr ImGuiStorage_GetDataPtr;
+    da_ImGuiStorage_Clear ImGuiStorage_Clear;
+    da_ImGuiStorage_GetInt ImGuiStorage_GetInt;
+    da_ImGuiStorage_SetInt ImGuiStorage_SetInt;
+    da_ImGuiStorage_GetFloat ImGuiStorage_GetFloat;
+    da_ImGuiStorage_SetFloat ImGuiStorage_SetFloat;
+    da_ImGuiStorage_GetVoidPtr ImGuiStorage_GetVoidPtr;
+    da_ImGuiStorage_SetVoidPtr ImGuiStorage_SetVoidPtr;
+    da_ImGuiStorage_GetIntRef ImGuiStorage_GetIntRef;
+    da_ImGuiStorage_GetFloatRef ImGuiStorage_GetFloatRef;
+    da_ImGuiStorage_GetVoidPtrRef ImGuiStorage_GetVoidPtrRef;
+    da_ImGuiStorage_SetAllInt ImGuiStorage_SetAllInt;
+}
+
+__gshared
+{
+    da_ImGuiTextEditCallbackData_DeleteChars ImGuiTextEditCallbackData_DeleteChars;
+    da_ImGuiTextEditCallbackData_InsertChars ImGuiTextEditCallbackData_InsertChars;
+    da_ImGuiTextEditCallbackData_HasSelection ImGuiTextEditCallbackData_HasSelection;
+}
+
+__gshared
+{
+    da_ImGuiListClipper_Init ImGuiListClipper_Init;
+    da_ImGuiListClipper_Init2 ImGuiListClipper_Init2;
+    da_ImGuiListClipper_Destroy ImGuiListClipper_Destroy;
+    da_ImGuiListClipper_Begin ImGuiListClipper_Begin;
+    da_ImGuiListClipper_End ImGuiListClipper_End;
+}
+
+__gshared
+{
+    da_ImDrawList_GetCmdSize ImDrawList_GetCmdSize;
+    da_ImDrawList_GetCmdPtr ImDrawList_GetCmdPtr;
+    da_ImDrawList_GetIndexBufferSize ImDrawList_GetIndexBufferSize;
+    da_ImDrawList_GetIndexPtr ImDrawList_GetIndexPtr;
+    da_ImDrawList_GetVertexBufferSize ImDrawList_GetVertexBufferSize;
+    da_ImDrawList_GetVertexPtr ImDrawList_GetVertexPtr;
+
+    da_ImDrawList_Clear ImDrawList_Clear;
+    da_ImDrawList_ClearFreeMemory ImDrawList_ClearFreeMemory;
+    da_ImDrawList_PushClipRect ImDrawList_PushClipRect;
+    da_ImDrawList_PushClipRectFullScreen ImDrawList_PushClipRectFullScreen;
+    da_ImDrawList_PopClipRect ImDrawList_PopClipRect;
+    da_ImDrawList_PushTextureID ImDrawList_PushTextureID;
+    da_ImDrawList_PopTextureID ImDrawList_PopTextureID;
+
+    da_ImDrawList_AddLine ImDrawList_AddLine;
+    da_ImDrawList_AddRect ImDrawList_AddRect;
+    da_ImDrawList_AddRectFilled ImDrawList_AddRectFilled;
+    da_ImDrawList_AddRectFilledMultiColor ImDrawList_AddRectFilledMultiColor;
+    da_ImDrawList_AddTriangleFilled ImDrawList_AddTriangleFilled;
+    da_ImDrawList_AddCircle ImDrawList_AddCircle;
+    da_ImDrawList_AddCircleFilled ImDrawList_AddCircleFilled;
+    da_ImDrawList_AddText ImDrawList_AddText;
+    da_ImDrawList_AddText2 ImDrawList_AddText2;
+    da_ImDrawList_AddImage ImDrawList_AddImage;
+    da_ImDrawList_AddPolyline ImDrawList_AddPolyline;
+    da_ImDrawList_AddConvexPolyFilled ImDrawList_AddConvexPolyFilled;
+    da_ImDrawList_AddBezierCurve ImDrawList_AddBezierCurve;
+
+    da_ImDrawList_PathClear ImDrawList_PathClear;
+    da_ImDrawList_PathLineTo ImDrawList_PathLineTo;
+    da_ImDrawList_PathLineToMergeDuplicate ImDrawList_PathLineToMergeDuplicate;
+    da_ImDrawList_PathFill ImDrawList_PathFill;
+    da_ImDrawList_PathStroke ImDrawList_PathStroke;
+    da_ImDrawList_PathArcTo ImDrawList_PathArcTo;
+    da_ImDrawList_PathArcToFast ImDrawList_PathArcToFast;
+    da_ImDrawList_PathBezierCurveTo ImDrawList_PathBezierCurveTo;
+    da_ImDrawList_PathRect ImDrawList_PathRect;
+
+    da_ImDrawList_ChannelsSplit ImDrawList_ChannelsSplit;
+    da_ImDrawList_ChannelsMerge ImDrawList_ChannelsMerge;
+    da_ImDrawList_ChannelsSetCurrent ImDrawList_ChannelsSetCurrent;
+
+    da_ImDrawList_AddCallback ImDrawList_AddCallback;
+    da_ImDrawList_AddDrawCmd ImDrawList_AddDrawCmd;
+
+    da_ImDrawList_PrimReserve ImDrawList_PrimReserve;
+    da_ImDrawList_PrimRect ImDrawList_PrimRect;
+    da_ImDrawList_PrimRectUV ImDrawList_PrimRectUV;
+    da_ImDrawList_PrimVtx ImDrawList_PrimVtx;
+    da_ImDrawList_PrimWriteVtx ImDrawList_PrimWriteVtx;
+    da_ImDrawList_PrimWriteIdx ImDrawList_PrimWriteIdx;
+    da_ImDrawList_UpdateClipRect ImDrawList_UpdateClipRect;
+    da_ImDrawList_UpdateTextureID ImDrawList_UpdateTextureID;
+
+    da_ImDrawData_DeIndexAllBuffers ImDrawData_DeIndexAllBuffers;
+    da_ImDrawData_ScaleClipRects ImDrawData_ScaleClipRects;
+}
+
+__gshared
+{
+    da_ImFont_GetGlyphsSize ImFont_GetGlyphsSize;
+    da_ImFont_GetGlyphPtr ImFont_GetGlyphPtr;
+    da_ImFont_GetIndexXAdvanceSize ImFont_GetIndexXAdvanceSize;
+    da_ImFont_GetIndexXAdvancePtr ImFont_GetIndexXAdvancePtr;
+    da_ImFont_GetIndexLookupSize ImFont_GetIndexLookupSize;
+    da_ImFont_GetIndexLookupPtr ImFont_GetIndexLookupPtr;
+    da_ImFont_Clear ImFont_Clear;
+    da_ImFont_BuildLookupTable ImFont_BuildLookupTable;
+    da_ImFont_GetCharAdvance ImFont_GetCharAdvance;
+    da_ImFont_FindGlyph ImFont_FindGlyph;
+    da_ImFont_SetFallbackChar ImFont_SetFallbackChar;
+    da_ImFont_IsLoaded ImFont_IsLoaded;
+    da_ImFont_CalcTextSizeA ImFont_CalcTextSizeA;
+    da_ImFont_CalcWordWrapPositionA ImFont_CalcWordWrapPositionA;
+    da_ImFont_RenderText ImFont_RenderText;
+}
+
+__gshared
+{
     da_ImFontAtlas_AddFont                  ImFontAtlas_AddFont;
     da_ImFontAtlas_AddFontDefault           ImFontAtlas_AddFontDefault;
     da_ImFontAtlas_AddFontFromFileTTF       ImFontAtlas_AddFontFromFileTTF;
     da_ImFontAtlas_AddFontFromMemoryTTF     ImFontAtlas_AddFontFromMemoryTTF;
     da_ImFontAtlas_AddFontFromMemoryCompressedTTF ImFontAtlas_AddFontFromMemoryCompressedTTF;
-	da_ImFontAtlas_AddFontFromMemoryCompressedBase85TTF ImFontAtlas_AddFontFromMemoryCompressedBase85TTF;
+    da_ImFontAtlas_AddFontFromMemoryCompressedBase85TTF ImFontAtlas_AddFontFromMemoryCompressedBase85TTF;
     da_ImFontAtlas_ClearTexData             ImFontAtlas_ClearTexData;
+    da_ImFontAtlas_ClearInputData           ImFontAtlas_ClearInputData;
+    da_ImFontAtlas_ClearFonts               ImFontAtlas_ClearFonts;
     da_ImFontAtlas_Clear                    ImFontAtlas_Clear;
+    da_ImFontAtlas_GetTexDataAsRGBA32       ImFontAtlas_GetTexDataAsRGBA32;
+    da_ImFontAtlas_GetTexDataAsAlpha8       ImFontAtlas_GetTexDataAsAlpha8;
+    da_ImFontAtlas_SetTexID                 ImFontAtlas_SetTexID;
+
+    da_ImFontAtlas_GetGlyphRangesDefault  ImFontAtlas_GetGlyphRangesDefault;
+    da_ImFontAtlas_GetGlyphRangesJapanese ImFontAtlas_GetGlyphRangesJapanese;
+    da_ImFontAtlas_GetGlyphRangesChinese  ImFontAtlas_GetGlyphRangesChinese;
+    da_ImFontAtlas_GetGlyphRangesCyrillic ImFontAtlas_GetGlyphRangesCyrillic;
 }
 
-//TODO: rework
 __gshared
 {
-    da_ImDrawList_GetVertexBufferSize ImDrawList_GetVertexBufferSize;
-    da_ImDrawList_GetVertexPtr ImDrawList_GetVertexPtr;
-    da_ImDrawList_GetIndexBufferSize ImDrawList_GetIndexBufferSize;
-    da_ImDrawList_GetIndexPtr ImDrawList_GetIndexPtr;
-    da_ImDrawList_GetCmdSize ImDrawList_GetCmdSize;
-    da_ImDrawList_GetCmdPtr ImDrawList_GetCmdPtr;
+    da_ImGuiWindow_GetID ImGuiWindow_GetID;
+    da_ImGuiWindow_GetIDPtr ImGuiWindow_GetIDPtr;
 
-    da_ImDrawData_DeIndexAllBuffers ImDrawData_DeIndexAllBuffers;
+    da_ImGuiWindow_Rect ImGuiWindow_Rect;
+    da_ImGuiWindow_CalcFontSize ImGuiWindow_CalcFontSize;
+    da_ImGuiWindow_TitleBarHeight ImGuiWindow_TitleBarHeight;
+    da_ImGuiWindow_TitleBarRect ImGuiWindow_TitleBarRect;
+    da_ImGuiWindow_MenuBarHeight ImGuiWindow_MenuBarHeight;
+    da_ImGuiWindow_MenuBarRect ImGuiWindow_MenuBarRect;
+    da_ImGuiWindow_Color ImGuiWindow_Color;
+    da_ImGuiWindow_ColorVec ImGuiWindow_ColorVec;
 
-    da_ImGuiIO_AddInputCharacter ImGuiIO_AddInputCharacter;
-    da_ImGuiIO_AddInputCharactersUTF8 ImGuiIO_AddInputCharactersUTF8;
+//-----------------------------------------------------------------------------
+// Internal API
+// No guarantee of forward compatibility here.
+//-----------------------------------------------------------------------------
+
+    da_igGetCurrentWindowRead igGetCurrentWindowRead;
+    da_igGetCurrentWindow igGetCurrentWindow;
+
+    da_igGetParentWindow igGetParentWindow;
+    da_igFocusWindow igFocusWindow;
+
+    da_igSetActiveID igSetActiveID;
+    da_igKeepAliveID igKeepAliveID;
+
+    da_igItemSize igItemSize;
+    da_igItemSizeRect igItemSizeRect;
+    da_igItemAdd igItemAdd;
+    da_igIsClippedEx igIsClippedEx;
+    da_igIsHovered igIsHovered;
+    da_igFocusableItemRegister igFocusableItemRegister;
+    da_igFocusableItemUnregister igFocusableItemUnregister;
+    da_igCalcItemSize igCalcItemSize;
+    da_igCalcWrapWidthForPos igCalcWrapWidthForPos;
+
+// NB: All position are in absolute pixels coordinates (not window coordinates)
+    da_igRenderText igRenderText;
+    da_igRenderTextWrapped igRenderTextWrapped;
+    da_igRenderTextClipped igRenderTextClipped;
+    da_igRenderFrame igRenderFrame;
+    da_igRenderCollapseTriangle igRenderCollapseTriangle;
+    da_igRenderCheckMark igRenderCheckMark;
+
+    da_igButtonBehavior igButtonBehavior;
+    da_igButtonEx igButtonEx;
+
+    da_igSliderBehavior igSliderBehavior;
+    da_igSliderFloatN igSliderFloatN;
+    da_igSliderIntN igSliderIntN;
+
+    da_igDragBehavior igDragBehavior;
+    da_igDragFloatN igDragFloatN;
+    da_igDragIntN igDragIntN;
+
+    da_igInputTextEx igInputTextEx;
+    da_igInputFloatN igInputFloatN;
+    da_igInputIntN igInputIntN;
+    da_igInputScalarEx igInputScalarEx;
+    da_igInputScalarAsWidgetReplacement igInputScalarAsWidgetReplacement;
+
+    da_igTreeNodeBehaviorIsOpened igTreeNodeBehaviorIsOpened;
+
+    da_igPlotEx igPlotEx;
+
+    da_igParseFormatPrecision igParseFormatPrecision;
+    da_igRoundScalar igRoundScalar;
 }
